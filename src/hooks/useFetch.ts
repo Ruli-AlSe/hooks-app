@@ -10,6 +10,8 @@ interface FetchState extends FetchResponse {
   error: { [key: string]: string | number } | null;
 }
 
+const localCache: { [key: string]: Pokemon } = {};
+
 export const useFetch = (url: string): FetchResponse => {
   const [state, setState] = useState<FetchState>({
     data: null,
@@ -32,6 +34,19 @@ export const useFetch = (url: string): FetchResponse => {
   };
 
   const getFetch = async () => {
+    if (localCache[url]) {
+      console.log('Fetching from cache');
+
+      setState({
+        data: localCache[url],
+        isLoading: false,
+        hasError: false,
+        error: null,
+      });
+
+      return;
+    }
+
     setLoadingState();
 
     const response = await fetch(url);
@@ -57,6 +72,8 @@ export const useFetch = (url: string): FetchResponse => {
       hasError: false,
       error: null,
     });
+
+    localCache[url] = data;
   };
 
   return {
