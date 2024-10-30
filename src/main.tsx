@@ -10,12 +10,15 @@ import { createRoot } from 'react-dom/client';
 // import { Memorize } from './05-memos/Memorize';
 // import { MemoHook } from './05-memos/MemoHook';
 // import { CallbackHook } from './06-useCallback/CallbackHook';
-import { Parent } from './07-homework-memo/parent';
+// import { Parent } from './07-homework-memo/Parent';
+import { TodoApp } from './08-useReducer/TodoApp';
+
+// import './08-useReducer/intro-reducer';
 
 import './index.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Parent />
+    <TodoApp />
   </StrictMode>
 );
