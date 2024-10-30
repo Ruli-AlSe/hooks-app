@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from 'react';
 import { initialState, todoReducer, TodosState } from '../08-useReducer/todoReducer';
 
-const init = () => {
+const init = (): TodosState[] => {
   return JSON.parse(localStorage.getItem('todos')!) || [];
 };
 
@@ -22,19 +22,19 @@ export const useTodos = () => {
     dispatch(action);
   };
 
-  const handleRemoveTodo = (todo: TodosState) => {
+  const handleRemoveTodo = (id: number) => {
     const action = {
       type: '[TODO] Remove Todo',
-      payload: todo,
+      payload: id,
     };
 
     dispatch(action);
   };
 
-  const handleToggleTodo = (todo: TodosState) => {
+  const handleToggleTodo = (id: number) => {
     const action = {
       type: '[TODO] Toggle Todo',
-      payload: todo,
+      payload: id,
     };
 
     dispatch(action);

@@ -4,22 +4,26 @@ export type TodosState = {
   done: boolean;
 };
 
-type TodoAction = {
+export type TodoAction = {
   type: string;
-  payload: TodosState;
+  payload: TodosState | number;
 };
 
 export const initialState: TodosState[] = [];
 
-export const todoReducer = (initialState: TodosState[], action: TodoAction) => {
+export const todoReducer = (initialState: TodosState[], action: TodoAction): TodosState[] => {
   switch (action.type) {
     case '[TODO] Add Todo':
+      if (typeof action.payload === 'number') return initialState;
+
       return [...initialState, action.payload];
+
     case '[TODO] Remove Todo':
-      return initialState.filter((todo) => todo.id !== action.payload.id);
+      return initialState.filter((todo) => todo.id !== action.payload);
+
     case '[TODO] Toggle Todo':
       return initialState.map((todo) => {
-        if (todo.id === action.payload.id) {
+        if (todo.id === action.payload) {
           return {
             ...todo,
             done: !todo.done,
@@ -27,6 +31,7 @@ export const todoReducer = (initialState: TodosState[], action: TodoAction) => {
         }
         return todo;
       });
+
     default:
       return initialState;
   }

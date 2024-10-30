@@ -3,8 +3,8 @@ import { TodoItem } from './TodoItem';
 
 interface Props {
   todos: TodosState[];
-  onRemoveTodo: (todo: TodosState) => void;
-  onToggleTodo: (todo: TodosState) => void;
+  onRemoveTodo: (id: number) => void;
+  onToggleTodo: (id: number) => void;
 }
 
 export const TodoList = ({ todos = [], onRemoveTodo, onToggleTodo }: Props) => {
