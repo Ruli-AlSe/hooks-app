@@ -9,18 +9,7 @@ type TodoAction = {
   payload: TodosState;
 };
 
-export const initialState: TodosState[] = [
-  {
-    id: new Date().getTime(),
-    description: 'Get gem of soul',
-    done: false,
-  },
-  {
-    id: new Date().getTime() + 100,
-    description: 'Get gem of power',
-    done: false,
-  },
-];
+export const initialState: TodosState[] = [];
 
 export const todoReducer = (initialState: TodosState[], action: TodoAction) => {
   switch (action.type) {
