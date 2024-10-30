@@ -20,9 +20,9 @@ export const MultipleCustomHooks = () => {
           name={String(data?.name)}
           sprites={[
             data?.sprites.front_default ?? '',
-            data?.sprites?.back_default ?? '',
-            data?.sprites?.front_shiny ?? '',
-            data?.sprites?.back_shiny ?? '',
+            data?.sprites.back_default ?? '',
+            data?.sprites.front_shiny ?? '',
+            data?.sprites.back_shiny ?? '',
           ]}
         />
       )}
