@@ -7,7 +7,7 @@ export type User = {
 };
 
 interface UserContextProps {
-  user?: User;
+  user: User | null;
   setUser: (user: User) => void;
 }
 
